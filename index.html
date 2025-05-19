@@ -2,23 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cai | Faith Journey</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
+      padding: 0;
       font-family: 'Quicksand', sans-serif;
-      background-color: #5e6d7d; /* Soft Slate Blue */
-      background-size: cover;
-      background-position: center center;
+      background-color: #5e6d7d;
       color: #f0f0f0;
-      height: 100vh;
     }
 
     html {
-      height: 100%;
       scroll-behavior: smooth;
+    }
+
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
     }
 
     header {
@@ -52,21 +59,18 @@
       margin: auto;
       display: none;
       background-color: #4a616f;
+      border-radius: 8px;
     }
 
     .hero {
       background: url('cross.jpg') center center / cover no-repeat;
-      background-size: cover;
       text-align: center;
-      align-items: center;
       padding: 10rem 6rem 2rem;
       display: flex;
-      position: relative;
       flex-direction: column;
       justify-content: center;
-      height: 100vh;
+      height: 40vh;
       color: white;
-      padding-bottom: 10rem;
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
     }
 
@@ -98,11 +102,8 @@
     }
 
     footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
       text-align: center;
-      padding: 1rem;
+      padding: 0.8rem;
       background-color: #3a4d59;
       font-size: 0.9rem;
       color: white;
@@ -112,75 +113,120 @@
       max-width: 100%;
       height: auto;
     }
+
+    .combined-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .box {
+      flex: 1 1 45%;
+      background-color: #4a616f;
+      padding: 2rem;
+      border-radius: 8px;
+    }
+
+    #testimony-list p {
+      background-color: #5b7482;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Cai | Faith Journey</h1>
-    <nav>
-      <a data-target="home">Home</a>
-      <a data-target="about">About Me</a>
-      <a data-target="worship">Worship</a>
-      <a data-target="bible">Bible Time</a>
-      <a data-target="testimonies">Testimonies</a>
-      <a data-target="prayer">Prayer</a>
-      <a data-target="contact">Contact</a>
-    </nav>
-  </header>
+  <div class="page-wrapper">
+    <header>
+      <h1>Cai | Faith Journey</h1>
+      <nav>
+        <a data-target="home">Home</a>
+        <a data-target="daily-verse">Daily Verse</a>
+        <a data-target="worship">Worship</a>
+        <a data-target="testimonies">Testimonies</a>
+        <a data-target="prayer">Prayer</a>
+        <a data-target="about-contact">About & Contact</a>
+      </nav>
+    </header>
 
-  <section class="hero" id="home" style="display: block;">
-    <h2>"So is My word that goes out from My mouth... it will accomplish what I desire." – Isaiah 55:11</h2>
-    <p>Welcome to my journey with Jesus. May you feel His presence here.</p>
-  </section>
+    <main>
+      <section class="hero" id="home" style="display: block;">
+        <h2>"So is My word that goes out from My mouth... it will accomplish what I desire." – Isaiah 55:11</h2>
+        <p>Welcome to my journey with Jesus. May you feel His presence here.</p>
+      </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I know and love Jesus, and I want people to know Him and get close to Him. Here's my story of faith...</p>
-  </section>
+      <section id="daily-verse">
+        <h1>Daily Bible Verse</h1>
+        <p id="verse-text" style="font-style: italic; font-size: 1.2rem;"></p>
+      </section>
 
-  <section id="worship">
-    <h2>Worship</h2>
-    <p>Here’s a song that moves my heart: <strong>"Egypt" by Cory Asbury</strong></p>
-    <a href="https://youtu.be/uEeCl1KyXiI" target="_blank">
-      <img src="egypt-chords.jpg" alt="Egypt by Cory Asbury">
-    </a>
-  </section>
+      <section id="worship">
+        <h2>Worship</h2>
+        <p>Here’s a song that moves my heart: <strong>"Egypt" by Cory Asbury</strong></p>
+        <a href="https://youtu.be/uEeCl1KyXiI" target="_blank">
+          <img src="egypt-chords.jpg" alt="Egypt by Cory Asbury">
+        </a>
+      </section>
 
-  <section id="bible">
-    <h2>Bible Time</h2>
-    <p>Reflections from my prayer and fasting: Morning and night prayers, and seeking deeper intimacy with the Lord through 3 days of prayer and fasting.</p>
-  </section>
+      <section id="testimonies">
+        <h2>Testimonies</h2>
+        <div id="testimony-list">
+          <p><strong>From Cai:</strong> One day in Taipei, by the river, I slipped while holding my son. Yet we were unharmed. Psalm 91:11–12 reminded me of God's protecting angels.</p>
+        </div>
+        <h3>Share Your Testimony</h3>
+        <form id="testimonyForm">
+          <div class="form-group">
+            <label for="testifierName">Your Name (optional):</label>
+            <input type="text" id="testifierName" name="testifierName" />
+          </div>
+          <div class="form-group">
+            <label for="testimonyText">Your Testimony:</label>
+            <textarea id="testimonyText" name="testimonyText" rows="4" required></textarea>
+          </div>
+          <button type="submit">Share Testimony</button>
+        </form>
+        <p id="testimonyConfirmation" style="color: lightgreen; display: none;">
+          Thank you for sharing! Your testimony has been added.
+        </p>
+      </section>
 
-  <section id="testimonies">
-    <h2>Testimonies</h2>
-    <p>One day in Taipei, by the river, I slipped while holding my son. Yet we were unharmed. Psalm 91:11–12 reminded me of God's protecting angels.</p>
-  </section>
+      <section id="prayer">
+        <h2>Prayer Requests</h2>
+        <form id="prayerForm">
+          <div class="form-group">
+            <label for="name">Your Name (optional):</label>
+            <input type="text" id="name" name="name">
+          </div>
+          <div class="form-group">
+            <label for="request">Your Prayer Request:</label>
+            <textarea id="request" name="request" rows="4" required></textarea>
+          </div>
+          <button type="submit">Send Prayer Request</button>
+        </form>
+        <p id="confirmation" style="color: lightgreen; display: none;">Thank you. Your prayer request has been received.</p>
+      </section>
 
-  <section id="prayer">
-    <h2>Prayer Requests</h2>
-    <form id="prayerForm">
-      <div class="form-group">
-        <label for="name">Your Name (optional):</label>
-        <input type="text" id="name" name="name">
-      </div>
-      <div class="form-group">
-        <label for="request">Your Prayer Request:</label>
-        <textarea id="request" name="request" rows="4" required></textarea>
-      </div>
-      <button type="submit">Send Prayer Request</button>
-    </form>
-    <p id="confirmation" style="color: lightgreen; display: none;">Thank you. Your prayer request has been received.</p>
-  </section>
+      <section id="about-contact">
+        <div class="combined-flex">
+          <div class="box">
+            <h2>About Me</h2>
+            <p>Not only that I know and love Jesus, but I also want people to know Him and get close to Him. This is my journey of faith and how God continues to shape me every day.</p>
+          </div>
+          <div class="box">
+            <h2>Contact</h2>
+            <p>If you’d like to connect, support, or need prayer:</p>
+            <p>Email: <strong>jballangan17@gmail.com</strong></p>
+          </div>
+        </div>
+      </section>
+    </main>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>If you’d like to connect or need prayer, email me at: <strong>jballangan17@gmail.com</strong></p>
-  </section>
-
-  <footer>
-    <p>© 2025 Cai | All Rights Reserved</p>
-  </footer>
+    <footer>
+      <p>© 2025 Cai | All Rights Reserved</p>
+    </footer>
+  </div>
 
   <script>
     const navLinks = document.querySelectorAll('nav a');
@@ -190,7 +236,7 @@
       link.addEventListener('click', () => {
         const target = link.getAttribute('data-target');
         sections.forEach(sec => {
-          sec.style.display = sec.id === target ? 'block' : 'none';
+          sec.style.display = (sec.id === target) ? 'block' : 'none';
         });
       });
     });
@@ -199,6 +245,37 @@
       e.preventDefault();
       document.getElementById('confirmation').style.display = 'block';
       this.reset();
+    });
+
+    document.getElementById('testimonyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('testifierName').value.trim() || "Anonymous";
+      const testimony = document.getElementById('testimonyText').value.trim();
+      if (testimony) {
+        const testimonyList = document.getElementById('testimony-list');
+        const newEntry = document.createElement('p');
+        newEntry.innerHTML = `<strong>From ${name}:</strong> ${testimony}`;
+        testimonyList.appendChild(newEntry);
+        document.getElementById('testimonyConfirmation').style.display = 'block';
+        this.reset();
+      }
+    });
+
+    // Daily Verse
+    document.addEventListener("DOMContentLoaded", function () {
+      const dailyVerses = [
+        "“The LORD is my strength and my shield; my heart trusts in him.” — Psalm 28:7",
+        "“I can do all things through Christ who strengthens me.” — Philippians 4:13",
+        "“For I know the plans I have for you... plans to give you hope and a future.” — Jeremiah 29:11",
+        "“Trust in the LORD with all your heart and lean not on your own understanding.” — Proverbs 3:5",
+        "“Be strong and courageous. Do not be afraid... for the LORD your God will be with you wherever you go.” — Joshua 1:9",
+        "“The steadfast love of the LORD never ceases; his mercies never come to an end.” — Lamentations 3:22",
+        "“Your word is a lamp to my feet and a light to my path.” — Psalm 119:105"
+      ];
+      const verseText = document.getElementById("verse-text");
+      const day = new Date().getDate();
+      const verseIndex = day % dailyVerses.length;
+      verseText.textContent = dailyVerses[verseIndex];
     });
   </script>
 </body>
